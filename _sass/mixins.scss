@@ -1,0 +1,31 @@
+@mixin gradient () {
+    animation: gradient-animate 25s ease infinite;
+}
+
+@mixin marquee () {
+  animation: marquee-animate 30s linear infinite;
+}
+
+@mixin fade-in () {
+  -webkit-animation: fade-in-animate 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in-animate 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@mixin expand-from-bottom () {
+	-webkit-animation: expand-from-bottom-animate 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: expand-from-bottom-animate 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+@mixin expand-from-left () {
+  -webkit-animation:   expand-from-left-animate 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation:   expand-from-left-animate 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+@mixin backdrop-filter ($value) {
+    backdrop-filter: blur($value);
+    -webkit-backdrop-filter: blur($value); 
+}
+
+@mixin transition-ease-in-out ($value) {
+  transition: $value ease-in-out;
+}

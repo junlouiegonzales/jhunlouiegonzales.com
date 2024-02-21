@@ -1,0 +1,584 @@
+@use "sass:string";
+@use 'sass:math';
+@use "sass:map";
+@use 'sass:list';
+@import 'variables';
+@import 'animations';
+@import 'mixins';
+
+// -------------------------- 
+// FUNCTIONS
+// --------------------------
+
+@function font-size($value) {
+    @return map-get($font-sizes, '#{$value}');
+}
+
+@function font-weight($value) {
+    @return map-get($font-weights, '#{$value}');
+}
+
+@function line-height($value) {
+    @return map-get($font-weights, '#{$value}');
+}
+
+@function color-primary($value) {
+    @return map-get($primary-colors, '#{$value}');
+}
+
+@function color-light($value) {
+    @return map-get($light-colors, '#{$value}');
+}
+
+@function color-dark($value) {
+    @return map-get($dark-colors, '#{$value}');
+}
+
+// @function get-class($css-name, $prop-name, $prop-value) {
+//     @return {
+//         .#{$spacings-abbr-key}-#{$i} {
+//             #{$spacings-abbr-key}: #{$unit}#{$spacing-unit};
+//         }
+//         .\!#{$spacings-abbr-key}-#{$i} {
+//             #{$spacings-abbr-key}: #{$unit}#{$spacing-unit} !important;
+//         }
+//     }
+// }
+
+// -------------------------- 
+// COLOR PALETTES
+// --------------------------
+
+$color-palettes: (
+    "primary",
+    "secondary",
+    "light",
+    "dark",
+);
+
+@each $color-palettes-key in $color-palettes {
+    $palettes: ();
+    @if($color-palettes-key =="primary") {
+        $palettes: $primary-colors;
+    }
+    @else if($color-palettes-key =="secondary") {
+        $palettes: $secondary-colors;
+    }
+    @else if($color-palettes-key =="light") {
+        $palettes: $light-colors;
+    }
+    @else if($color-palettes-key =="dark") {
+        $palettes: $dark-colors;
+    }
+    @else { $palettes: (); }
+
+    @each $key, $value in $palettes {
+        $prefix: if($key == "", $key, -#{$key});
+        .color-#{$color-palettes-key}#{$prefix} {
+            color: #{$value};
+        }
+    }
+
+    @each $key, $value in $palettes {
+        $prefix: if($key == "", $key, -#{$key});
+        .bg-color-#{$color-palettes-key}#{$prefix} {
+            background-color: #{$value};
+        }
+    }
+}
+
+// -------------------------- 
+// FONTS
+// --------------------------
+
+@each $key, $value in $heading-sizes {
+    #{$key} {
+        font-size: #{$value};
+    }
+}
+
+@each $key, $value in $font-sizes {
+    .font-size-#{$key} {
+        font-size: #{$value};
+    }
+}
+
+@each $key, $value in $font-weights {
+    .font-weight-#{$key} {
+        font-weight: #{$value};
+    }
+}
+
+@each $key, $value in $line-heights {
+    .line-height-#{$key} {
+        line-height: #{$value};
+    }
+
+    .\!line-height-#{$key} {
+        line-height: #{$value} !important;
+    }
+}
+
+@each $key, $value in $letter-spacings {
+    .letter-spacing-#{$key} {
+        letter-spacing: #{$value};
+    }
+}
+
+$alignments: (
+    "right",
+    "center",
+    "left",
+    "initial"
+);
+
+@each $key in $alignments {
+    .text-align-#{$key} {
+        text-align: #{$key};
+    }
+
+    .\!text-align-#{$key} {
+        text-align: #{$key};
+    }
+}
+
+$text-decorations: (
+    "auto",
+    "blink",
+    "dashed",
+    "dotted",
+    "line-through",
+    "none",
+    "overline",
+    "solid",
+    "underline",
+    "wavy",
+    "initial",
+);
+
+@each $key in $text-decorations {
+    .text-decoration-#{$key} {
+        text-decoration: #{$key};
+    }
+}
+
+@for $i from 1 through 10 {
+    .text-indent-#{$i} {
+        text-indent: #{$i}#{$spacing-unit};
+    }
+}
+
+
+// -------------------------- 
+// WIDTHS AND HEIGHTS
+// --------------------------
+
+.view-height-100 {
+    height: 100vh;
+}
+
+.view-width-100 {
+    width: 100vw;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+$width-height-abbr: (
+    "height",
+    "width",
+    "min-height",
+    "max-height",
+    "min-width",
+    "max-width"
+);
+
+@each $key in $width-height-abbr {
+    @for $i from 1 through 10 {
+        .#{$key}-#{$i} {
+            #{$key}: #{$i}#{$spacing-unit};
+        }
+    }
+    @for $i from 1 through 10 {
+        $unit: $i * 10;
+        .#{$key}-#{$unit} {
+            #{$key}: #{$unit}#{$spacing-unit};
+        }
+    }
+}
+
+// -------------------------- 
+// POSITIONING
+// --------------------------
+
+
+
+// -------------------------- 
+// SPACINGS
+// --------------------------
+
+.margin-auto {
+    margin: 0 auto;
+}
+
+$positions: (
+    "top",
+    "left",
+    "right",
+    "bottom",
+    "x",
+    "y"
+);
+$spacings-abbr: (
+    "margin",
+    "padding",
+);
+
+@each $spacings-abbr-key in $spacings-abbr {
+    // 1 - 9
+    @for $i from 1 through 9 {
+        $unit: math.div($i, 10);
+        .#{$spacings-abbr-key}-#{$i} {
+            #{$spacings-abbr-key}: #{$unit}#{$spacing-unit};
+        }
+        .\!#{$spacings-abbr-key}-#{$i} {
+            #{$spacings-abbr-key}: #{$unit}#{$spacing-unit} !important;
+        }
+    }
+
+
+    // 10 - 100
+    @for $i from 0 through 10 {
+        $unit: $i * 10;
+        .#{$spacings-abbr-key}-#{$unit} {
+            #{$spacings-abbr-key}: #{$i}#{$spacing-unit};
+        }
+        .\!#{$spacings-abbr-key}-#{$unit} {
+            #{$spacings-abbr-key}: #{$i}#{$spacing-unit} !important;
+        }
+    }
+
+    // 150 - 300
+    $counter-1: 0;
+    @for $i from 0 through 3 {
+        $value: 15 + $counter-1;
+        $unit: #{$value}0;
+        .#{$spacings-abbr-key}-#{$unit} {
+            #{$spacings-abbr-key}: #{$value}#{$spacing-unit};
+        }
+        .\!#{$spacings-abbr-key}-#{$unit} {
+            #{$spacings-abbr-key}: #{$value}#{$spacing-unit} !important;
+        }
+        $counter-1: $counter-1 + 5;
+    }
+
+    @each $positions-key in $positions {
+        // 1 - 9
+        @for $i from 1 through 9 {
+            $unit: math.div($i, 10);
+            .#{$spacings-abbr-key}-#{$positions-key}-#{$i} {
+                @if($positions-key =="y") {
+                    #{$spacings-abbr-key}-top: #{$unit}#{$spacing-unit};
+                    #{$spacings-abbr-key}-bottom: #{$unit}#{$spacing-unit};
+                }
+                @else if $positions-key =="x" {
+                    #{$spacings-abbr-key}-left: #{$unit}#{$spacing-unit};
+                    #{$spacings-abbr-key}-right: #{$unit}#{$spacing-unit};
+                }
+                @else {
+                    #{$spacings-abbr-key}-#{$positions-key}: #{$unit}#{$spacing-unit};
+                }
+            }
+
+            .\!#{$spacings-abbr-key}-#{$positions-key}-#{$i} {
+                @if($positions-key =="y") {
+                    #{$spacings-abbr-key}-top: #{$unit}#{$spacing-unit} !important;
+                    #{$spacings-abbr-key}-bottom: #{$unit}#{$spacing-unit} !important;
+                }
+                @else if $positions-key =="x" {
+                    #{$spacings-abbr-key}-left: #{$unit}#{$spacing-unit} !important;
+                    #{$spacings-abbr-key}-right: #{$unit}#{$spacing-unit} !important;
+                }
+                @else {
+                    #{$spacings-abbr-key}-#{$positions-key}: #{$unit}#{$spacing-unit} !important;
+                }
+            }
+        }
+
+
+        // 10 - 100
+        @for $i from 0 through 10 {
+            $unit: $i * 10;
+            .#{$spacings-abbr-key}-#{$positions-key}-#{$unit} {
+                @if($positions-key =="y") {
+                    #{$spacings-abbr-key}-top: #{$i}#{$spacing-unit};
+                    #{$spacings-abbr-key}-bottom: #{$i}#{$spacing-unit};
+                }
+                @else if $positions-key =="x" {
+                    #{$spacings-abbr-key}-left: #{$i}#{$spacing-unit};
+                    #{$spacings-abbr-key}-right: #{$i}#{$spacing-unit};
+                }
+                @else {
+                    #{$spacings-abbr-key}-#{$positions-key}: #{$i}#{$spacing-unit};
+                }
+            }
+
+            .\!#{$spacings-abbr-key}-#{$positions-key}-#{$unit} {
+                @if($positions-key =="y") {
+                    #{$spacings-abbr-key}-top: #{$i}#{$spacing-unit} !important;
+                    #{$spacings-abbr-key}-bottom: #{$i}#{$spacing-unit} !important;
+                }
+                @else if $positions-key =="x" {
+                    #{$spacings-abbr-key}-left: #{$i}#{$spacing-unit} !important;
+                    #{$spacings-abbr-key}-right: #{$i}#{$spacing-unit} !important;
+                }
+                @else {
+                    #{$spacings-abbr-key}-#{$positions-key}: #{$i}#{$spacing-unit} !important;
+                }
+            }
+        }
+
+        // 150 - 300
+        $counter-2: 0;
+        @for $i from 0 through 3 {
+            $value: 15 + $counter-2;
+            $unit: #{$value}0;
+            .#{$spacings-abbr-key}-#{$positions-key}-#{$unit} {
+                #{$spacings-abbr-key}-#{$positions-key}: #{$value}#{$spacing-unit};
+            }
+            .\!#{$spacings-abbr-key}-#{$positions-key}-#{$unit} {
+                #{$spacings-abbr-key}-#{$positions-key}: #{$value}#{$spacing-unit};
+            }
+            $counter-2: $counter-2 + 5;
+        }
+    }
+}
+
+// -------------------------- 
+// DISPLAYS
+// --------------------------
+
+$displays: (
+    "flex",
+    "block",
+    "inline-block",
+    "initial",
+    "inline",
+    "none"
+);
+
+@each $displays-key in $displays {
+    .display-#{$displays-key} {
+        display: #{$displays-key};
+    }
+
+    .\!display-#{$displays-key} {
+        display: #{$displays-key};
+    }
+}
+
+// -------------------------- 
+// FLEX
+// --------------------------
+
+$flex-alignments: (
+    "start",
+    "center",
+    "end",
+    "space-between"
+);
+
+$flex-directions: (
+    "row",
+    "column"
+);
+
+$flex-abbr: (
+    "justify-content",
+    "align-items",
+    "flex-direction",
+    "flex-wrap"
+);
+
+$flex-wraps: (
+    "nowrap",
+    "wrap",
+    "wrap-reverse",
+    "initial",
+    "revert",
+    "revert-layer",
+    "unset"
+);
+
+@each $flex-abbr-key in $flex-abbr {
+    $flex-properties: (
+    );
+
+    @if($flex-abbr-key =="flex-direction") {
+        $flex-properties: $flex-directions;
+    }
+
+    @if($flex-abbr-key =="align-items" or $flex-abbr-key =="justify-content") {
+        $flex-properties: $flex-alignments;
+    }
+
+    @if($flex-abbr-key =="flex-wrap") {
+        $flex-properties: $flex-wraps;
+    }
+
+    @each $flex-properties-key in $flex-properties {
+        .#{$flex-abbr-key}-#{$flex-properties-key} {
+            #{$flex-abbr-key}: #{$flex-properties-key};
+        }
+
+        .\!#{$flex-abbr-key}-#{$flex-properties-key} {
+            #{$flex-abbr-key}: #{$flex-properties-key} !important;
+        }
+    }
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+// -------------------------- 
+// BULLET
+// --------------------------
+
+$list-style-types: (
+    "circle",
+    "square",
+    "upper-roman",
+    "lower-alpha",
+    "none"
+);
+
+@each $key in $list-style-types {
+    .list-style-type-#{$key} {
+        list-style-type: #{$key};
+    }
+}
+
+// -------------------------- 
+// ANIMATIONS
+// --------------------------
+
+.animation-fade-in {
+    @include fade-in();
+}
+  
+.animation-expand-from-bottom {
+    @include expand-from-bottom();
+}
+
+@each $key, $value in $animate-delays {
+    .animation-delay-#{$key} {
+        animation-delay: #{$value};
+    }
+
+    .\!animation-delay-#{$key} {
+        animation-delay: #{$value} !important;
+    }
+}
+
+// -------------------------- 
+// OVERFLOWS
+// --------------------------
+
+$overflows: (
+    "auto",
+    "hidden",
+    "overlay",
+    "visible",
+    "initial",
+    "revert",
+    "reverse-layer",
+    "unset",
+);
+
+@each $key in $overflows {
+    .overflow-#{$key} {
+        overflow: #{$key};
+    }
+}
+
+// -------------------------- 
+// BORDERS
+// --------------------------
+
+$border-styles: (
+    "solid",
+    "dashed",
+    "double",
+    "dotted",
+);
+
+$border-widths: (
+    "thin": 0.1rem,
+    "medium": 0.2rem,
+    "thick": 0.3rem,
+);
+
+$border-positions: (
+    "",
+    "top",
+    "left",
+    "bottom",
+    "right"
+);
+
+@each $position-key in $border-positions {
+    $position: if($position-key == "", $position-key, -#{$position-key});
+    // BORDER STYLE
+    @each $key in $border-styles {
+        .border#{$position}-style-#{$key} {
+            border#{$position}-style: #{$key};
+        }
+    }
+    // BORDER WIDTH
+    @each $key, $value in $border-widths {
+        .border#{$position}-width-#{$key} {
+            border#{$position}-width: #{$value};
+        }
+    }
+    // BORDER COLOR
+    @each $key in $color-palettes {
+        $palettes: ();
+        @if($key =="light") {
+            $palettes: $light-colors;
+        }
+        @else if($key =="dark") {
+            $palettes: $dark-colors;
+        }
+        @else { $palettes: (); }
+    
+        @each $palettes-key, $value in $palettes {
+            $prefix: if($palettes-key == "", $palettes-key, -#{$palettes-key});
+            .border#{$position}-color-#{$key}#{$prefix} {
+                border#{$position}-color: #{$value};
+            }
+        }
+    }
+}
+
+// 10 - 100
+@for $i from 1 through 20 {
+    .border-radius-#{$i} {
+        border-radius: #{$i}#{$spacing-unit};
+    }
+}
+
+// -------------------------- 
+// GAP
+// --------------------------
+
+@for $i from 1 through 15 {
+    .gap-#{$i} {
+        gap: #{$i}#{$spacing-unit};
+    }
+}

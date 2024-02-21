@@ -1,0 +1,352 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+}
+
+* {
+  font-family: $font-family-primary;
+  line-height: line-height("md");
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: $font-family-secondary;
+  letter-spacing: -4px;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid color-dark("100");
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(242deg, #2E2C2C -8.09%, #121111 45.6%, #070707 102.76%);
+  text-align: center;
+  background-size: 400% 400%;
+  @include gradient();
+
+  .wrapper {
+    text-align: left;
+    padding: 0 1.5rem;
+
+    @media only screen and (min-width: $breakpoint-large) {
+       margin: 0 auto;
+       text-align: center;
+    }
+  }
+
+  .banner {
+    font-size: 4rem;
+    line-height: 1.2em;
+
+    @media only screen and (min-width: $breakpoint-large) {
+      font-size: 6.5rem;
+      line-height: initial;
+   }
+  }
+}
+
+button {
+  background: none; 
+  padding: 0.8rem 2rem; 
+  border-radius: 20rem; 
+  border-color: color-dark("100");
+  border-width: thin; 
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+      background-color: color-dark("800");
+      color: color-light("");
+  }
+}
+
+.card {
+  height: 302px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  overflow: hidden;
+  @include transition-ease-in-out(0.3s);
+
+  @media only screen and (min-width: $breakpoint-large) {
+    height: 372px;
+    width: 372px;
+  }
+
+  a.project:hover {
+    text-decoration: underline;
+    color: color-light("");
+    @include transition-ease-in-out(0.3s);
+  }
+
+  &:hover {
+      border-radius: 1rem;
+
+      .overlay {
+          opacity: 1;
+      }
+
+      img {
+          transform: scale(1.5);
+      }
+  }
+
+  img {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      @include transition-ease-in-out(0.3s);
+      z-index: 1;
+  }
+
+  .overlay {
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      background: color-dark("600");
+      @include transition-ease-in-out(0.3s);
+      @include backdrop-filter(10px);
+
+      a {
+          width: 8rem;
+          height: 8rem;
+          border: 2px solid color-light("300");
+          border-radius: 50%;
+          text-align: center;
+          line-height: 8em;
+          text-decoration: none;
+          color: color-light("500");
+          font-weight: font-weight("bold");
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          overflow: hidden;
+          position: relative;
+          transition: background-color 0.3s ease-in-out;
+
+          &:hover {
+              background-color: rgba(255, 255, 255, 0.09);
+              color: color-light("");
+              border-color: color-light("");
+          }
+
+          &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(45deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0) 100%);
+              transform: translateX(-100%);
+              transition: transform 0.3s ease-in-out;
+              pointer-events: none;
+          }
+
+          &:hover:before {
+              transform: translateX(0);
+          }
+      }
+  }
+}
+
+img[class="margin-x-20 margin-y-10"] {
+  filter: saturate(0);
+  transition: all 0.2s ease-in-out 0ms;
+
+  &:hover {
+    filter: saturate(100%);
+  }
+}
+
+.expertise {
+  .icon {
+    height: 30px;
+    height: 30px;
+    opacity: 0.4;
+    transition:  0.2s ease-out;
+  }
+
+  &:hover {
+    .icon {
+      opacity: 1;
+      transform: rotateZ(45deg);
+    }
+  }
+}
+
+.testimontial-wrapper {
+  opacity: 0;
+  flex: 1 0 23%;
+
+  .testimontial {
+    transition: 0.3s ease-out;
+
+    img {
+      transition: 0.3s ease-out;
+    }
+  
+    &:hover {
+      box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+
+      img {
+        border-color: color-dark("200")
+      }
+    }
+  }
+}
+
+.testimontial-wrapper.active {
+  opacity: 1;
+  @include expand-from-bottom ();
+}
+
+.experience-wrapper {
+  opacity: 0;
+  padding: 0;
+
+  @media only screen and (min-width: $breakpoint-large) {
+    padding-right: 3rem;
+ }
+
+  .experience {
+    .year {
+      transition: 0.1s ease-in;
+    }
+  
+    .divider {
+      width: 100%;
+      position: relative;
+      
+      .wrapper {
+        width: 0;
+        background-color: color-dark("");
+        height: 2px;
+        position: absolute;
+        transition: width 0.5s ease-in-out;
+      }
+    }
+  
+    &:hover {
+      .divider > .wrapper {  
+        width: 100%;
+      }
+  
+      .year {
+        background-color: color-dark("") !important;
+        color: color-light("");
+      }
+    }
+  }  
+}
+
+.experience-wrapper.active {
+  @include expand-from-left();
+  opacity: 1;
+}
+
+.social ul {
+  list-style: none;
+}
+
+.social ul li {
+  margin: 0.6em 0;
+}
+
+.social ul li a {
+  height: 30px;
+  width: 100px;
+  width: auto;
+  min-width: auto;
+  display: block;
+  padding: 6px 0px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  color: color-dark("800");
+}
+
+.social ul li a>div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.social ul li a:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.social ul li a .clone>*,
+.social ul li a .text>* {
+  opacity: 1;
+  font-style: normal;
+  transition: 0.5s;
+}
+
+.social ul li a .clone>* {
+  transform: translateY(60px);
+}
+
+.social ul li a:hover .clone>* {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.social ul li a:hover .text>* {
+  opacity: 1;
+  transform: translateY(-60px);
+  transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.social ul li a:hover .clone> :nth-child(1) {
+  transition-delay: 0.15s;
+}
+
+.social ul li a:hover .clone> :nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.social ul li a:hover .clone> :nth-child(3) {
+  transition-delay: 0.25s;
+}
+
+.social ul li a:hover .clone> :nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.social ul li a:active {
+  transform: translate(2px, 2px);
+}
+
+
+

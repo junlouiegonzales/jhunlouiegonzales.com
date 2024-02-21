@@ -1,0 +1,55 @@
+
+
+:root {
+	--gap-width: 10px;
+	--total-brand: 23;
+	--logo-width: 4rem;
+	--total-logo-width: calc(var(--total-brand) * var(--logo-width) * 2);
+}
+
+.slider {
+	max-width: 42rem;
+	height: 12rem;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+	opacity: 0.4;
+	display: none;
+	-webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%);
+
+	@media only screen and (min-width: $breakpoint-large) {
+		display: block;
+	 }
+}
+
+.slider::before,
+.slider::after {
+	position: absolute;
+	content: "";
+	height: 100%;
+	width: var(--logo-width);
+}
+
+.slider::before {
+	left: 0;
+}
+
+.slider::after {
+	right: 0;
+}
+
+.slider ul.brands {
+	list-style: none;
+	width: var(--total-logo-width);
+	display: flex;
+	align-items: center;
+	gap: var(--gap-width);
+	@include marquee();
+}
+
+ul.brands li.brand-logo {
+	width: var(--logo-width);
+	text-align: center;
+}
