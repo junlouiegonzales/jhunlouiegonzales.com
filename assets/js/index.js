@@ -33,9 +33,25 @@ function animateOnScroll (selector)
   }
 }
 
+function animateBody () {
+  var elem = document.getElementById("about");
+  if(!elem) return;
+  var windowHeight = window.innerHeight;
+  var elementTop = elem.getBoundingClientRect().top;
+  var elementVisible =550;
+
+  if (elementTop < windowHeight - elementVisible) {
+      document.body.classList.add("active");
+  } 
+  else {
+    document.body.classList.remove("active");
+  }
+}
+
 window.addEventListener("scroll", function() 
 {
   animateNavigation();
+  animateBody();
   animateOnScroll('.experience-wrapper');
   animateOnScroll('.testimontial-wrapper');
 });
@@ -57,7 +73,8 @@ window.addEventListener("load", function()
 
   var elems = document.querySelectorAll("#collapsible nav ul li a");
   var coll = document.getElementById("collapsible");
-  elems.forEach(element => {
+  elems.forEach(function (element)
+  {
     element.onclick = function () {
       if(coll) {
         coll.classList.remove("active");
@@ -73,5 +90,4 @@ window.addEventListener("click", function(event)
   if(coll) {
     coll.classList.remove("active");
   }
-
 })

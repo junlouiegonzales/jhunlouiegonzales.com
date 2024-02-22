@@ -14,6 +14,19 @@ body {
   font-size: 100%;
 }
 
+body {
+  background: linear-gradient(242deg, #2E2C2C -8.09%, #121111 45.6%, #070707 102.76%);
+  background-size: 400% 400%;
+  color: color-light("800");
+  @include transition-ease-in-out(0.1s);
+  @include gradient();
+}
+
+body.active {
+  color: initial;
+  background: color-light("");
+}
+
 * {
   font-family: $font-family-primary;
   line-height: line-height("md");
@@ -34,10 +47,7 @@ hr {
 }
 
 header {
-  background: linear-gradient(242deg, #2E2C2C -8.09%, #121111 45.6%, #070707 102.76%);
   text-align: center;
-  background-size: 400% 400%;
-  @include gradient();
 
   .wrapper {
     text-align: left;

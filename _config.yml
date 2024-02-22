@@ -23,9 +23,9 @@ tagline: Driving Innovation in Healthcare and Automotive Sector | Expert in Mobi
 email: junlouie.gonzales@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Driving Innovation in Healthcare and Automotive Sector | Expert in Mobile and Software Development | Let's Push Boundaries!
-baseurl: "" # the subpath of your site, e.g. /blog
-logo: /assets/carsfast-logo.svg
-thumbnail: https://my-website-thumbnail
+baseurl: "/" # the subpath of your site, e.g. /blog
+logo: /assets/imgs/logo.png
+thumbnail: https://thumbnail.png
 
 twitter:
   username: jhunlouiegonzales
