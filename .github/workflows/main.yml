@@ -33,3 +33,6 @@ jobs:
 
       - name: Deploy static site to S3 bucket
         run: aws s3 sync ./public/ s3://www.jhunlouiegonzales.com --delete
+
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./public/ s3://jhunlouiegonzales.com --delete
