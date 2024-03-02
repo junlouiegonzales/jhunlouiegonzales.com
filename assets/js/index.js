@@ -53,6 +53,7 @@ window.addEventListener("scroll", function()
   animateNavigation();
   animateBody();
   animateOnScroll('.experience-wrapper');
+  animateOnScroll('.expertise-wrapper');
   animateOnScroll('.testimontial-wrapper');
 });
 

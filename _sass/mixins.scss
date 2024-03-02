@@ -21,6 +21,11 @@
   animation:   expand-from-left-animate 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
+@mixin expand-from-right () {
+  -webkit-animation:   expand-from-right-animate 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation:   expand-from-right-animate 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
 @mixin backdrop-filter ($value) {
     backdrop-filter: blur($value);
     -webkit-backdrop-filter: blur($value); 

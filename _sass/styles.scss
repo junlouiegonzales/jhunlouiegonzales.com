@@ -70,14 +70,14 @@ header {
   }
 }
 
-button {
+a.button {
   background: none; 
   padding: 0.8rem 2rem; 
   border-radius: 20rem; 
-  border-color: color-dark("100");
-  border-width: thin; 
+  border: 1px solid color-light("600");
   cursor: pointer;
   transition: 0.3s ease-in-out;
+  text-decoration: none;
 
   &:hover {
       background-color: color-dark("800");
@@ -182,10 +182,16 @@ button {
       }
   }
 }
+div[class="margin-x-20 margin-y-10 tooltip fade"] {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+}
 
-img[class="margin-x-20 margin-y-10"] {
+div[class="margin-x-20 margin-y-10 tooltip fade"] > img {
   filter: saturate(0);
-  transition: all 0.2s ease-in-out 0ms;
+  transition: all 0.1s ease-in-out 0ms;
+  cursor: pointer;
 
   &:hover {
     filter: saturate(100%);
@@ -275,6 +281,16 @@ img[class="margin-x-20 margin-y-10"] {
 
 .experience-wrapper.active {
   @include expand-from-left();
+  opacity: 1;
+}
+
+.expertise-wrapper {
+  opacity: 0;
+  padding: 0;
+}
+
+.expertise-wrapper.active {
+  @include expand-from-right();
   opacity: 1;
 }
 

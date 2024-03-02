@@ -7,7 +7,7 @@ layout: default
             <h1 class="animation-expand-from-bottom animation-delay-10ms color-light font-weight-regular margin-bottom-8 banner">Jhun Louie Gonzales</h1>
             <h2
                 class="animation-expand-from-bottom animation-delay-50ms color-light-900 font-size-lgxx font-weight-regular margin-top-0">
-                Senior Software Engineer</h2>
+                Senior Full-Stack Engineer</h2>
             <p
                 class="max-width-60 color-light-400 font-size-lgx font-weight-light line-height-lg animation-fade-in animation-delay-1s">
                 Driving
@@ -255,19 +255,21 @@ layout: default
                     </div>
                 </div>
                 <div class="col-5">
-                    <h5 class="letter-spacing-3 margin-bottom-30 display-block">EXPERTISE</h5>
-                    {% include expertise.html title="Full-Stack Development" %}
-                    {% include expertise.html title="Mobile Application Development" %}
-                    {% include expertise.html title="Project Management" %}
-                    {% include expertise.html title="User Interface Design" %}
-                    {% include expertise.html title="Lean UX" %}
-                    {% include expertise.html title="Clean Architecture" %}
-                    {% include expertise.html title="Microservices" %}
-                    {% include expertise.html title="Infrastructure as a Code (IaC)" %}
-                    {% include expertise.html title="Containerization" %}
-                    {% include expertise.html title="RESTful Architecture" %}
-                    {% include expertise.html title="Continuous Integration & Delivery" %}
-                    {% include expertise.html title="Serverless" %}
+                    <div class="expertise-wrapper !animation-delay-20ms">
+                        <h5 class="letter-spacing-3 margin-bottom-30 display-block">EXPERTISE</h5>
+                        {% include expertise.html title="Full-Stack Development" %}
+                        {% include expertise.html title="Mobile Application Development" %}
+                        {% include expertise.html title="Project Management" %}
+                        {% include expertise.html title="User Interface Design" %}
+                        {% include expertise.html title="Lean UX" %}
+                        {% include expertise.html title="Clean Architecture" %}
+                        {% include expertise.html title="Microservices" %}
+                        {% include expertise.html title="Infrastructure as a Code (IaC)" %}
+                        {% include expertise.html title="Containerization" %}
+                        {% include expertise.html title="RESTful Architecture" %}
+                        {% include expertise.html title="Continuous Integration & Delivery" %}
+                        {% include expertise.html title="Serverless" %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -278,30 +280,32 @@ layout: default
                 <div class="col-12">
                     <h5 class="letter-spacing-3 margin-bottom-30 display-block text-align-center">TECHNOLOGY STACKS</h5>
                     <div class="display-flex align-items-center justify-content-center flex-wrap-wrap padding-top-40">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/terraform.svg" alt="Terraform">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/nextjs.svg" alt="NextJS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/graphql.svg" alt="GraphQL">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/javascript.svg" alt="Javascript">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/amazon-aws.svg" alt="Amazon Web Services">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/docker.svg" alt="Docker">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/react.svg" alt="ReactJS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/mongodb.svg" alt="MongoDB">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/node.svg" alt="NodeJS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/jekyll.svg" alt="Jekyll">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/firebase.svg" alt="ReactJS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/dotnet.svg" alt="MongoDB">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/flutter.svg" alt="NodeJS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/sass.svg" alt="Sass">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/express.svg" alt="ExpressJS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/azure.svg" alt="Microsoft Azure">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/sql-database.svg" alt="SQL Database">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/typescript.svg" alt="Typescript">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/meteor.svg" alt="MeteorJS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/electron.svg" alt="ElectronJS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/kubernetes.svg" alt="Kubernetes">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/material.svg" alt="Material-ui">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/tailwind.svg" alt="TailwindCSS">
-                        <img class="margin-x-20 margin-y-10" src="/assets/svgs/colored/figma.svg" alt="Figma">
+                        {% include techstack.html src="/assets/svgs/colored/terraform.svg" description="Terraform" %}
+                        {% include techstack.html src="/assets/svgs/colored/nextjs.svg" description="NextJS" %}
+                        {% include techstack.html src="/assets/svgs/colored/graphql.svg" description="GraphQL" %}
+                        {% include techstack.html src="/assets/svgs/colored/javascript.svg" description="Javascript" %}
+                        {% include techstack.html src="/assets/svgs/colored/amazon-aws.svg" description="Amazon Web Services" %}
+                        {% include techstack.html src="/assets/svgs/colored/docker.svg" description="Docker" %}
+                        {% include techstack.html src="/assets/svgs/colored/react.svg" description="ReactJS" %}
+                        {% include techstack.html src="/assets/svgs/colored/mongodb.svg" description="MongoDB" %}
+                        {% include techstack.html src="/assets/svgs/colored/namecheap.svg" description="Namecheap" %}
+                        {% include techstack.html src="/assets/svgs/colored/node.svg" description="NodeJS" %}
+                        {% include techstack.html src="/assets/svgs/colored/jekyll.svg" description="Jekyll" %}
+                        {% include techstack.html src="/assets/svgs/colored/firebase.svg" description="Firebase" %}
+                        {% include techstack.html src="/assets/svgs/colored/dotnet.svg" description=".NET" %}
+                        {% include techstack.html src="/assets/svgs/colored/flutter.svg" description="Flutter" %}
+                        {% include techstack.html src="/assets/svgs/colored/sass.svg" description="SASS/SCSS" %}
+                        {% include techstack.html src="/assets/svgs/colored/express.svg" description="ExpressJS" %}
+                        {% include techstack.html src="/assets/svgs/colored/azure.svg" description="Azure" %}
+                        {% include techstack.html src="/assets/svgs/colored/sql-database.svg" description="SQL" %}
+                        {% include techstack.html src="/assets/svgs/colored/typescript.svg" description="Typescript" %}
+                        {% include techstack.html src="/assets/svgs/colored/meteor.svg" description="MeteorJS" %}
+                        {% include techstack.html src="/assets/svgs/colored/electron.svg" description="ElectronJS" %}
+                        {% include techstack.html src="/assets/svgs/colored/kubernetes.svg" description="Kubernetes" %}
+                        {% include techstack.html src="/assets/svgs/colored/material.svg" description="Material UI" %}
+                        {% include techstack.html src="/assets/svgs/colored/tailwind.svg" description="TailwindCSS" %}
+                        {% include techstack.html src="/assets/svgs/colored/figma.svg" description="Figma" %}
+                        {% include techstack.html src="/assets/svgs/colored/cloudflare.svg" description="Cloudflare" %}
                     </div>
                 </div>
             </div>
@@ -370,9 +374,9 @@ layout: default
                 <p class="font-size-lgxx font-weight-regular line-height-lg margin-top-10">Take the first move</br>
                     <strong>There's no time for hesitation</strong>
                 </p>
-                <button class="font-size-md color-dark-800">
+                <a class="button font-size-md color-dark-800" href="https://calendly.com/junlouie-gonzales" target="_blank">
                     Schedule
-                </button>
+                </a>
             </div>
             <div class="col-4">
                 <div class="social">

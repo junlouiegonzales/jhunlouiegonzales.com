@@ -1,0 +1,35 @@
+.tooltip {
+    position: relative;
+}
+
+.tooltip:before,
+.tooltip:after {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+.tooltip:before {
+    background: rgba(0, 0, 0, .75);
+    color: color-light("");
+    font-weight: font-weight("regular");
+    content: attr(data-title);
+    font-size: 14px;
+    padding: 6px 20px;
+    top: 85px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.tooltip.fade:after,
+.tooltip.fade:before {
+    transform: translate3d(0, -10px, 0);
+    transition: all .15s ease-in-out;
+}
+
+.tooltip.fade:hover:after,
+.tooltip.fade:hover:before {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
